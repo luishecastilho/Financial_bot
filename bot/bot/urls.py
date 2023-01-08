@@ -3,6 +3,6 @@ from . import views
 
 
 urlpatterns = [
-    path('', views.index, name = 'Apresentação e escolha do BOT'),
-    path('execution/', views.execution, name = 'Execução do BOT')
+    path('', views.bot, name = 'Apresentação e escolha do BOT'),
+    path('execution/', views.bot_execution, name = 'Execução do BOT')
 ]

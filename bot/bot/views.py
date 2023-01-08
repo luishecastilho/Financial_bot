@@ -3,14 +3,14 @@ from django.http import HttpResponse
 
 # Create your views here.
 
-def index(request):
+def bot(request):
 
 
     
-    return render(request, 'index.html', {'text':'Apresentação e escolha do BOT"'})
+    return render(request, 'bot.html', {'text':'Apresentação e escolha do BOT"'})
 
-def execution(request):
+def bot_execution(request):
 
 
 
-    return render(request, 'execution.html', {'text':'Execução do BOT"'})
+    return render(request, 'bot_execution.html', {'text':'Execução do BOT"'})
