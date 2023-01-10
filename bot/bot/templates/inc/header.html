@@ -58,10 +58,23 @@
                         <!-- icone de dinheiro -->
                     </div>
                     <div class="ms-3">
-                        <h6 class="mb-0">SALDO</h6>
-                        <span>tipo da conta</span>
+                        <h6 class="mb-0">{{account.currency}} {{account.balance}}</h6>
+                        <span>{% if account.is_virtual == 1 %} VIRTUAL {% else %} NORMAL {% endif %}</span>
                     </div>
                 </div>
+                {% for acc in account.account_list %}
+                <div class="d-flex align-items-center ms-4 mb-4">
+                    <div class="position-relative">
+                        <span>{% if acc.is_virtual == 1 %} V {% else %} N {% endif %}</span>
+                    </div>
+                    <div class="ms-3">
+                        <h6 class="mb-0">{{acc.loginid}} {% if acc.loginid == account.loginid %} <i
+                                class="fa fa-check me-2"></i><br><span class="text-primary">{{account.currency}}
+                                {{account.balance}}</span> {% endif %}
+                        </h6>
+                    </div>
+                </div>
+                {% endfor %}
                 <div class="navbar-nav w-100">
                     <a href="/bot" class="nav-item nav-link {% if request.path == '/bot/' %} active {% endif %}"><i
                             class="fa fa-home me-2"></i>Início</a>
@@ -97,14 +110,13 @@
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                         <!-- <img class="rounded-circle me-lg-2" src="{% static 'img/user.jpg' %}" alt=""
-                        style="width: 40px; height: 40px;"> -->
-                        <i class="fa fa-user-edit me-2"></i>
-                        <span class="d-none d-lg-inline-flex">CONTA</span>
+                        style="width: 40px; height: 40px;">
+                        <i class="fa fa-user-edit me-2"></i> -->
+                        <span class="d-none d-lg-inline-flex">{{account.email}}</span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
-                        <a href="#" class="dropdown-item">My Profile</a>
-                        <a href="#" class="dropdown-item">Settings</a>
-                        <a href="#" class="dropdown-item">Log Out</a>
+                        <a href="#" class="dropdown-item">Ir para Corretora</a>
+                        <a href="#" class="dropdown-item">Sair</a>
                     </div>
                 </div>
             </div>
