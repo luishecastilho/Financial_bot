@@ -51,35 +51,11 @@
                 <a href="index.html" class="navbar-brand mx-4 mb-3">
                     <h3 class="text-primary"><i class="fa fa-user-edit me-2"></i>daniloluis</h3>
                 </a>
-                <div class="d-flex align-items-center ms-4 mb-4">
-                    <div class="position-relative">
-                        <img class="rounded-circle" src="{% static 'img/user.jpg' %}" alt=""
-                            style="width: 40px; height: 40px;">
-                        <!-- icone de dinheiro -->
-                    </div>
-                    <div class="ms-3">
-                        <h6 class="mb-0">{{account.currency}} {{account.balance}}</h6>
-                        <span>{% if account.is_virtual == 1 %} VIRTUAL {% else %} NORMAL {% endif %}</span>
-                    </div>
-                </div>
-                {% for acc in account.account_list %}
-                <div class="d-flex align-items-center ms-4 mb-4">
-                    <div class="position-relative">
-                        <span>{% if acc.is_virtual == 1 %} V {% else %} N {% endif %}</span>
-                    </div>
-                    <div class="ms-3">
-                        <h6 class="mb-0">{{acc.loginid}} {% if acc.loginid == account.loginid %} <i
-                                class="fa fa-check me-2"></i><br><span class="text-primary">{{account.currency}}
-                                {{account.balance}}</span> {% endif %}
-                        </h6>
-                    </div>
-                </div>
-                {% endfor %}
                 <div class="navbar-nav w-100">
                     <a href="/bot" class="nav-item nav-link {% if request.path == '/bot/' %} active {% endif %}"><i
                             class="fa fa-home me-2"></i>Início</a>
-                    <a href="/bot/execution"
-                        class="nav-item nav-link {% if request.path == '/bot/execution/' %} active {% endif %}"><i
+                    <a href="/bot/list"
+                        class="nav-item nav-link {% if request.path == '/bot/list/' %} active {% elif '/bot/execution/' in request.path %} active {% endif %}"><i
                             class=" fa fa-robot
                         me-2"></i>Bot</a>
                     <a href="/contact"
@@ -88,10 +64,9 @@
                     <a href="/coaching"
                         class="nav-item nav-link {% if request.path == '/coaching/' %} active {% endif %}"><i
                             class=" fa fa-graduation-cap me-2"></i>Especialização</a>
-
                 </div>
+            </nav>
         </div>
-        </nav>
     </div>
     <!-- Sidebar End -->
 
@@ -100,25 +75,23 @@
     <div class="content">
         <!-- Navbar Start -->
         <nav class="navbar navbar-expand bg-secondary navbar-dark sticky-top px-4 py-0">
-            <a href="index.html" class="navbar-brand d-flex d-lg-none me-4">
-                <h2 class="text-primary mb-0"><i class="fa fa-user-edit"></i></h2>
-            </a>
-            <a href="#" class="sidebar-toggler flex-shrink-0">
-                <i class="fa fa-bars"></i>
-            </a>
+
             <div class="navbar-nav align-items-center ms-auto">
+                {% if account %}
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                        <!-- <img class="rounded-circle me-lg-2" src="{% static 'img/user.jpg' %}" alt=""
-                        style="width: 40px; height: 40px;">
-                        <i class="fa fa-user-edit me-2"></i> -->
-                        <span class="d-none d-lg-inline-flex">{{account.email}}</span>
+                        <button type="button" class="btn btn-outline-success m-2">ONLINE</button>
                     </a>
                     <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
-                        <a href="#" class="dropdown-item">Ir para Corretora</a>
-                        <a href="#" class="dropdown-item">Sair</a>
+                        <a href="https://app.deriv.com" target="_blank" class="dropdown-item">Ir para Corretora</a>
+                        <a href="/bot/logout" class="dropdown-item">Sair</a>
                     </div>
                 </div>
+                {% else %}
+                <a href="/bot/login/?type=real">
+                    <button type="button" class="btn btn-outline-light m-2">ENTRAR NA CORRETORA</button>
+                </a>
+                {% endif %}
             </div>
         </nav>
         <!-- Navbar End -->

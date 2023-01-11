@@ -1,0 +1,41 @@
+{% load static %}
+{% include "inc/header.html" %}
+
+<!-- Blank Start -->
+<div class="container-fluid pt-4 px-4">
+    <div class="row vh-100 bg-secondary rounded m-0 p-2 d-flex flex-column">
+
+        {% if account %}
+        <div class="d-flex flex-row align-self-center justify-content-around pt-10 w-25 mb-5"
+            style="height: 5em; font-size:28px">
+            <div class="navbar-nav align-items-center">
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                        CONTA {% if account.is_virtual == 1 %} Fake {% else %} Real {% endif %}
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-end bg-primary border-0 rounded-0 rounded-bottom m-0">
+                        {% for acc in account.account_list %}
+                        <a href="/bot/login/?type={% if acc.is_virtual == 1 %}fake{% else %}real{% endif %}"
+                            class="dropdown-item">
+                            {% if acc.is_virtual == 1 %} Fake {% else %} Real {% endif %}
+                        </a>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="d-flex flex-row justify-content-center align-items-center">
+            <a href="/bot/execution/fgoADQf"><button type="button" class="btn btn-outline-light m-2 rounded-pill">Risco
+                    Baixo</button></a>
+            <a href="/bot/execution/kmo3fBLL"><button type="button"
+                    class="btn btn-outline-warning m-2 rounded-pill">Risco
+                    Moderado</button></a>
+            <a href="/bot/execution/Gbv4lp1"><button type="button" class="btn btn-outline-danger m-2 rounded-pill">Risco
+                    Alto</button></a>
+        </div>
+        {% endif %}
+    </div>
+</div>
+<!-- Blank End -->
+
+{% include "inc/footer.html" %}
