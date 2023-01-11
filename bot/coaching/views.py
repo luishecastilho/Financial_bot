@@ -4,4 +4,7 @@ from django.http import HttpResponse
 # Create your views here.
 
 def index(request):
-    return render(request, 'coaching/index.html')
+    #dados de um possível LOGIN
+    user = []
+
+    return render(request, 'coaching/index.html', {'user': user})
