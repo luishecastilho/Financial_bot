@@ -3,5 +3,5 @@ from django.http import HttpResponse
 
 # Create your views here.
 
-def coaching(request):
-    return render(request, 'coaching.html')
+def index(request):
+    return render(request, 'coaching/index.html')

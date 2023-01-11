@@ -3,11 +3,11 @@ from django.shortcuts import render
 from . import deriv
 import asyncio
 
-def bot(request):
+def index(request):
 
-    return render(request, 'bot.html')
+    return render(request, 'bot/index.html')
 
-def bot_execution(request):
+def execution(request):
     account = asyncio.run(deriv.login())
     
-    return render(request, 'bot_execution.html', {'account': account})
+    return render(request, 'bot/execution.html', {'account': account})

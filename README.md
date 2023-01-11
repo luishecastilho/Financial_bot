@@ -20,3 +20,6 @@ python3 manage.py runserver
 
 ESSA FUNÇÃO DO DERIV SER UMA CLASSE
 para a conexão já estar pronta e dps só pegar os dados
+
+quando por em produção, precisa rodar esse comando para ele coletar todos os arquivos estáticos
+python3 manage.py collectstatic
