@@ -6,7 +6,12 @@
         <div class="col-sm-12 col-xl-12">
             <div class="bg-secondary rounded h-100 p-4">
                 <h2 class="mb-4">Tire sua dúvida conosco</h2>
-                <form action="/contact/send" method="POST">
+                {% if status == 's' %}
+                <h3 style="color: green; font-weight: bold">Contato enviado com sucesso</h3>
+                {% elif status == 'n' %}
+                <h3 style="color: red; font-weight: bold">Contato não enviado</h3>
+                {% endif %}
+                <form action="{% url 'send' %}" method="POST">
                     {% csrf_token %}
                     <div class="mb-3">
                         <label for="name" class="form-label">Nome</label>
@@ -17,9 +22,8 @@
                         <input type="text" class="form-control" id="phone" name="phone">
                     </div>
                     <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label">Email</label>
-                        <input type="email" name="email" class="form-control" id="exampleInputEmail1"
-                            aria-describedby="emailHelp">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp">
                         <div id="emailHelp" class="form-text">Você nunca irá aparecer nos nossos e-mais de Marketing..
                         </div>
                     </div>

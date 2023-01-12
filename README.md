@@ -23,3 +23,11 @@ para a conexão já estar pronta e dps só pegar os dados
 
 quando por em produção, precisa rodar esse comando para ele coletar todos os arquivos estáticos
 python3 manage.py collectstatic
+
+
+
+ATUALIZA banco
+python3 manage.py makemigrations
+
+SALVA atualização do banco
+python3 manage.py migrate
