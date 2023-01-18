@@ -9,7 +9,7 @@ def index(request):
     user = []
     account = []
 
-    videos = Video.objects.all()
+    videos = Video.objects.all().order_by('order')
 
     return render(request, 'coaching/index.html', {
                                                     'user': user,
