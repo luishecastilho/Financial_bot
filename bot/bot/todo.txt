@@ -1,0 +1,2 @@
+AQUI (list e execution) TEM Q TA LOGADO NA PLATAFORMA
+POSSIBILITAR LOGIN NA DERIV, ou se der... pegar do login dele o token e já logar

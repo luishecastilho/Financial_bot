@@ -23,8 +23,8 @@ async def logout():
     api.logout()
     """
 
-"""async def getCache():
+async def getCache():
     connection = await websockets.connect('wss://ws.binaryws.com/websockets/v3?app_id=16014')
     api = DerivAPI(connection=connection)
     cache = await api.cache.authorize(api_token_fake)
-    return cache"""
+    return cache

@@ -1,0 +1,1 @@
+POSSIBILITAR LOGIN NA PLATAFORMA AQUI, se n tiver logado, nao tem video, só listagem
