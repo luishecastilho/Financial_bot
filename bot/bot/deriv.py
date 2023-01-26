@@ -10,10 +10,11 @@ api_token_real = 'bThZrQNGmGxelJG'
 
 async def authorize(token=api_token_real):
     #api = DerivAPI(endpoint='ws://{}'.format(endpoint), app_id=app_id)
-    connection = await websockets.connect('wss://ws.binaryws.com/websockets/v3?app_id={}'.format(app_id))
-    api = DerivAPI(connection=connection)
+    #connection = await websockets.connect('wss://ws.binaryws.com/websockets/v3?app_id=16014')
+    api = DerivAPI(app_id=16014)
 
-    authorize = await api.authorize(token)
+    authorize = await api.authorize('7wqh30BJvjjLDMN')
+    print(authorize["authorize"])
     return authorize["authorize"]
     
 """
